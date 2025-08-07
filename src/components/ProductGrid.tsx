@@ -14,56 +14,56 @@ const products = [
     image: dress1,
     name: "Robe Aurore",
     description: "Robe fluide en soie rose poudré, coupe élégante et intemporelle",
-    price: "450€"
+    price: "450 DT"
   },
   {
     id: 2,
     image: dress2,
     name: "Robe Céleste",
     description: "Robe de soirée en crêpe beige, drapé sophistiqué",
-    price: "520€"
+    price: "520 DT"
   },
   {
     id: 3,
     image: dress3,
     name: "Robe Dorée",
     description: "Robe en soie dorée, brillance subtile et coupe moderne",
-    price: "680€"
+    price: "680 DT"
   },
   {
     id: 4,
     image: dress4,
     name: "Robe Pureté",
     description: "Robe minimaliste en crêpe blanc, lignes épurées",
-    price: "420€"
+    price: "420 DT"
   },
   {
     id: 5,
     image: dress5,
     name: "Robe Romance",
     description: "Robe romantique en mousseline rose, détails délicats",
-    price: "490€"
+    price: "490 DT"
   },
   {
     id: 6,
     image: dress6,
     name: "Robe Sophistiquée",
     description: "Robe de cocktail beige, élégance raffinée",
-    price: "560€"
+    price: "560 DT"
   },
   {
     id: 7,
     image: dress7,
     name: "Robe Champagne",
     description: "Robe en satin champagne, éclat luxueux",
-    price: "620€"
+    price: "620 DT"
   },
   {
     id: 8,
     image: dress8,
     name: "Robe Poésie",
     description: "Robe en soie rose poudré, douceur et féminité",
-    price: "510€"
+    price: "510 DT"
   }
 ];
 

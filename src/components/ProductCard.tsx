@@ -1,18 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
+  id: number;
   image: string;
   name: string;
   description: string;
   price: string;
 }
 
-const ProductCard = ({ image, name, description, price }: ProductCardProps) => {
-  const handleOrderClick = () => {
+const ProductCard = ({ id, image, name, description, price }: ProductCardProps) => {
+  const handleWhatsAppOrder = () => {
     const message = `Bonjour, je suis intéressée par la robe "${name}" au prix de ${price}. Pourriez-vous me donner plus d'informations ?`;
-    const whatsappUrl = `https://wa.me/33123456789?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/21612345678?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleInstagramOrder = () => {
+    window.open('https://instagram.com/maisonislemsalouma', '_blank');
+  };
+
+  const handleFacebookOrder = () => {
+    window.open('https://facebook.com/maisonislemsalouma', '_blank');
   };
 
   return (
@@ -36,14 +46,43 @@ const ProductCard = ({ image, name, description, price }: ProductCardProps) => {
         <div className="font-playfair text-2xl font-bold text-accent mb-4">
           {price}
         </div>
-        <Button 
-          variant="elegant" 
-          size="lg" 
-          className="w-full"
-          onClick={handleOrderClick}
-        >
-          Commander via WhatsApp
-        </Button>
+        <div className="space-y-3">
+          <Link to={`/product/${id}`} className="block">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="w-full"
+            >
+              Voir les détails
+            </Button>
+          </Link>
+          <div className="grid grid-cols-3 gap-2">
+            <Button 
+              variant="elegant" 
+              size="sm" 
+              className="text-xs"
+              onClick={handleWhatsAppOrder}
+            >
+              WhatsApp
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-xs"
+              onClick={handleInstagramOrder}
+            >
+              Instagram
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-xs"
+              onClick={handleFacebookOrder}
+            >
+              Facebook
+            </Button>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
