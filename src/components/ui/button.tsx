@@ -18,6 +18,10 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Custom elegant variants
+        elegant: "bg-gradient-gold text-white shadow-button hover:shadow-elegant transition-elegant font-medium",
+        hero: "bg-transparent border-2 border-white text-white hover:bg-white hover:text-text-elegant transition-elegant font-medium backdrop-blur-sm",
+        contact: "bg-primary text-primary-foreground shadow-elegant hover:bg-accent hover:text-accent-foreground transition-elegant",
       },
       size: {
         default: "h-10 px-4 py-2",
