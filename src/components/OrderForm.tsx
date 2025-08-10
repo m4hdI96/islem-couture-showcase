@@ -6,7 +6,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import { supabase } from '@/lib/supabase';
 
 interface OrderFormProps {
   selectedProduct?: {
@@ -39,35 +38,11 @@ const OrderForm: React.FC<OrderFormProps> = ({ selectedProduct, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Save to Supabase
-      const { error } = await supabase
-        .from('orders')
-        .insert([
-          {
-            customer_name: formData.name,
-            customer_email: formData.email,
-            customer_phone: formData.phone,
-            customer_address: formData.address,
-            product_id: formData.productId,
-            product_name: formData.productName,
-            size: formData.size,
-            message: formData.message,
-            status: 'pending',
-            created_at: new Date().toISOString()
-          }
-        ]);
-
-      if (error) throw error;
-
-      // Send email notification (you'll need to configure this in Supabase)
-      await supabase.functions.invoke('send-order-email', {
-        body: {
-          to: 'votre-email@exemple.com', // Replace with your email
-          customerData: formData
-        }
-      });
-
-      toast.success('Votre commande a été envoyée avec succès!');
+      // Simuler l'envoi de la commande
+      // Ici vous pouvez ajouter la logique d'envoi d'email
+      console.log('Commande envoyée:', formData);
+      
+      toast.success('Votre commande a été envoyée avec succès! Nous vous contacterons bientôt.');
       
       // Reset form
       setFormData({

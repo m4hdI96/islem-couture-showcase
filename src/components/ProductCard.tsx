@@ -40,8 +40,8 @@ const ProductCard = ({ id, image, name, description, price }: ProductCardProps) 
         <div className="font-playfair text-2xl font-bold text-accent mb-4">
           {price}
         </div>
-        <div className="space-y-3">
-          <Link to={`/product/${id}`} className="block">
+        <div className="flex gap-3">
+          <Link to={`/product/${id}`} className="flex-1">
             <Button 
               variant="outline" 
               size="lg" 
@@ -50,13 +50,14 @@ const ProductCard = ({ id, image, name, description, price }: ProductCardProps) 
               Voir les détails
             </Button>
           </Link>
+          
           <OrderDialog product={productData}>
             <Button 
               variant="elegant" 
-              size="sm" 
-              className="w-full text-xs"
+              size="lg" 
+              className="flex-1"
             >
-              <ShoppingBag className="w-3 h-3 mr-1" />
+              <ShoppingBag className="w-4 h-4 mr-1" />
               Commander
             </Button>
           </OrderDialog>
