@@ -14,56 +14,72 @@ const products = [
     image: dress1,
     name: "Robe Aurore",
     description: "Robe fluide en soie rose poudré, coupe élégante et intemporelle",
-    price: "450 DT"
+    price: "450 DT",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Rose Poudré", "Blanc Cassé", "Beige"]
   },
   {
     id: 2,
     image: dress2,
     name: "Robe Céleste",
     description: "Robe de soirée en crêpe beige, drapé sophistiqué",
-    price: "520 DT"
+    price: "520 DT",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Beige", "Taupe", "Écru"]
   },
   {
     id: 3,
     image: dress3,
-    name: "Robe Dorée",
-    description: "Robe en soie dorée, brillance subtile et coupe moderne",
-    price: "680 DT"
+    name: "Robe Lumière",
+    description: "Robe cocktail dorée, broderies délicates et finitions luxueuses",
+    price: "680 DT",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Doré", "Champagne", "Bronze"]
   },
   {
     id: 4,
     image: dress4,
-    name: "Robe Pureté",
-    description: "Robe minimaliste en crêpe blanc, lignes épurées",
-    price: "420 DT"
+    name: "Robe Perle",
+    description: "Robe longue nacrée, coupe sirène sublimant la silhouette",
+    price: "750 DT",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Nacré", "Perle", "Blanc"]
   },
   {
     id: 5,
     image: dress5,
-    name: "Robe Romance",
-    description: "Robe romantique en mousseline rose, détails délicats",
-    price: "490 DT"
+    name: "Robe Étoile",
+    description: "Robe de gala scintillante, parfaite pour les grandes occasions",
+    price: "850 DT",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Argent", "Platine", "Noir Étoilé"]
   },
   {
     id: 6,
     image: dress6,
-    name: "Robe Sophistiquée",
-    description: "Robe de cocktail beige, élégance raffinée",
-    price: "560 DT"
+    name: "Robe Camélia",
+    description: "Robe romantique à volants, dentelle française délicate",
+    price: "590 DT",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Rose Pâle", "Ivoire", "Nude"]
   },
   {
     id: 7,
     image: dress7,
-    name: "Robe Champagne",
-    description: "Robe en satin champagne, éclat luxueux",
-    price: "620 DT"
+    name: "Robe Jasmin",
+    description: "Robe bohème chic, broderies florales artisanales",
+    price: "480 DT",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Blanc", "Crème", "Lin"]
   },
   {
     id: 8,
     image: dress8,
-    name: "Robe Poésie",
-    description: "Robe en soie rose poudré, douceur et féminité",
-    price: "510 DT"
+    name: "Robe Opale",
+    description: "Robe minimaliste chic, lignes épurées et tombé parfait",
+    price: "420 DT",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Noir", "Marine", "Anthracite"]
   }
 ];
 
@@ -83,7 +99,15 @@ const ProductGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => (
             <div key={product.id} className="animate-fade-in">
-              <ProductCard {...product} />
+              <ProductCard 
+                id={product.id}
+                image={product.image}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                sizes={product.sizes}
+                colors={product.colors}
+              />
             </div>
           ))}
         </div>

@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ShoppingBag } from 'lucide-react';
-import OrderDialog from './OrderDialog';
+import ProductOptions from './ProductOptions';
 
 interface ProductCardProps {
   id: number;
@@ -10,13 +9,18 @@ interface ProductCardProps {
   name: string;
   description: string;
   price: string;
+  sizes: string[];
+  colors: string[];
 }
 
-const ProductCard = ({ id, image, name, description, price }: ProductCardProps) => {
+const ProductCard = ({ id, image, name, description, price, sizes, colors }: ProductCardProps) => {
   const productData = {
     id,
     name,
-    price
+    price,
+    image,
+    sizes,
+    colors
   };
 
   return (
@@ -40,8 +44,8 @@ const ProductCard = ({ id, image, name, description, price }: ProductCardProps) 
         <div className="font-playfair text-2xl font-bold text-accent mb-4">
           {price}
         </div>
-        <div className="flex gap-3">
-          <Link to={`/product/${id}`} className="flex-1">
+        <div className="space-y-3">
+          <Link to={`/product/${id}`} className="block">
             <Button 
               variant="outline" 
               size="lg" 
@@ -51,16 +55,11 @@ const ProductCard = ({ id, image, name, description, price }: ProductCardProps) 
             </Button>
           </Link>
           
-          <OrderDialog product={productData}>
-            <Button 
-              variant="elegant" 
-              size="lg" 
-              className="flex-1"
-            >
-              <ShoppingBag className="w-4 h-4 mr-1" />
-              Commander
-            </Button>
-          </OrderDialog>
+          <ProductOptions 
+            product={productData}
+            availableSizes={sizes}
+            availableColors={colors}
+          />
         </div>
       </CardContent>
     </Card>
