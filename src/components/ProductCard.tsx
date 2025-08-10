@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { ShoppingBag } from 'lucide-react';
+import OrderDialog from './OrderDialog';
 
 interface ProductCardProps {
   id: number;
@@ -11,18 +13,10 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ id, image, name, description, price }: ProductCardProps) => {
-  const handleWhatsAppOrder = () => {
-    const message = `Bonjour, je suis intéressée par la robe "${name}" au prix de ${price}. Pourriez-vous me donner plus d'informations ?`;
-    const whatsappUrl = `https://wa.me/21612345678?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const handleInstagramOrder = () => {
-    window.open('https://instagram.com/maisonislemsalouma', '_blank');
-  };
-
-  const handleFacebookOrder = () => {
-    window.open('https://facebook.com/maisonislemsalouma', '_blank');
+  const productData = {
+    id,
+    name,
+    price
   };
 
   return (
@@ -56,32 +50,16 @@ const ProductCard = ({ id, image, name, description, price }: ProductCardProps) 
               Voir les détails
             </Button>
           </Link>
-          <div className="grid grid-cols-3 gap-2">
+          <OrderDialog product={productData}>
             <Button 
               variant="elegant" 
               size="sm" 
-              className="text-xs"
-              onClick={handleWhatsAppOrder}
+              className="w-full text-xs"
             >
-              WhatsApp
+              <ShoppingBag className="w-3 h-3 mr-1" />
+              Commander
             </Button>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="text-xs"
-              onClick={handleInstagramOrder}
-            >
-              Instagram
-            </Button>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="text-xs"
-              onClick={handleFacebookOrder}
-            >
-              Facebook
-            </Button>
-          </div>
+          </OrderDialog>
         </div>
       </CardContent>
     </Card>

@@ -2,7 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, MessageCircle, Instagram, Facebook } from "lucide-react";
+import { ArrowLeft, ShoppingBag } from "lucide-react";
+import OrderDialog from '@/components/OrderDialog';
 
 // Import dress images
 import dress1 from "@/assets/dress-1.jpg";
@@ -80,18 +81,10 @@ const ProductDetail = () => {
     );
   }
 
-  const handleWhatsAppOrder = () => {
-    const message = `Bonjour, je suis intéressée par la robe "${product.name}" au prix de ${product.price}. Pourriez-vous me donner plus d'informations ?`;
-    const whatsappUrl = `https://wa.me/21612345678?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const handleInstagramOrder = () => {
-    window.open('https://instagram.com/maisonislemsalouma', '_blank');
-  };
-
-  const handleFacebookOrder = () => {
-    window.open('https://facebook.com/maisonislemsalouma', '_blank');
+  const productData = {
+    id: product.id,
+    name: product.name,
+    price: product.price
   };
 
   return (
@@ -170,40 +163,21 @@ const ProductDetail = () => {
               </CardContent>
             </Card>
 
-            {/* Order Buttons */}
+            {/* Order Form */}
             <div className="space-y-4">
               <h3 className="font-playfair text-xl font-semibold text-text-elegant">
                 Commander cette robe
               </h3>
-              <div className="grid gap-3">
+              <OrderDialog product={productData}>
                 <Button 
                   variant="elegant" 
                   size="lg" 
                   className="w-full justify-start gap-3"
-                  onClick={handleWhatsAppOrder}
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Commander via WhatsApp
+                  <ShoppingBag className="w-5 h-5" />
+                  Passer une commande
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="w-full justify-start gap-3"
-                  onClick={handleInstagramOrder}
-                >
-                  <Instagram className="w-5 h-5" />
-                  Commander via Instagram
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="w-full justify-start gap-3"
-                  onClick={handleFacebookOrder}
-                >
-                  <Facebook className="w-5 h-5" />
-                  Commander via Facebook
-                </Button>
-              </div>
+              </OrderDialog>
             </div>
           </div>
         </div>
